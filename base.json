@@ -1,0 +1,33 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
+  "extends": [
+    "config:base",
+    ":semanticCommits",
+    ":separateMultipleMajorReleases"
+  ],
+  "timezone": "America/New_York",
+
+  "prConcurrentLimit": 0,
+
+  "stabilityDays": 3,
+
+  "labels": ["dependencies"],
+
+  "vulnerabilityAlerts": {
+    "labels": ["security"]
+  },
+
+  "packageRules": [
+    {
+      "matchSourceUrlPrefixes": [
+        "git+https://github.com/LLK/",
+        "git+ssh://git@github.com/LLK/",
+        "git://github.com/LLK/",
+        "git@github.com:LLK/",
+        "https://github.com/LLK/"
+      ],
+      "stabilityDays": 0
+    }
+  ]
+}

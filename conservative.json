@@ -1,0 +1,22 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
+  "extends": [
+    "github>LLK/scratch-renovate-config:base"
+  ],
+
+  "packageRules": [
+    {
+      "matchCurrentVersion": "!/^0/",
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchSourceUrlPrefixes": [
+        "git+https://github.com/LLK/",
+        "git+ssh://git@github.com/LLK/",
+        "git://github.com/LLK/",
+        "git@github.com:LLK/",
+        "https://github.com/LLK/"
+      ],
+      "automerge": true
+    }
+  ]
+}
