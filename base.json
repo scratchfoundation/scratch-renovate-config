@@ -12,10 +12,10 @@
 
   "stabilityDays": 3,
 
-  "labels": ["dependencies"],
+  "addLabels": ["dependencies"],
 
   "vulnerabilityAlerts": {
-    "labels": ["security"]
+    "addLabels": ["security"]
   },
 
   "packageRules": [
