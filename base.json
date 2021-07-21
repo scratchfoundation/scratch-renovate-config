@@ -10,6 +10,8 @@
 
   "prConcurrentLimit": 0,
 
+  "prHourlyLimit": 5,
+
   "stabilityDays": 3,
 
   "addLabels": ["dependencies"],
