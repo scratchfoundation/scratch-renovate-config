@@ -32,7 +32,7 @@ The common configuration in this file includes:
   * this configuration does not enable automatic merges but does preconfigure this setting
 * label all Renovate PRs with `dependencies`
   * add the `security` label for any PR associated with a GitHub Security Vulnerability
-* if multiple major version updates are available, open separate PRs for each major version
+* separate major updates from minor/patch updates: if both are available, open two separate PRs
 
 ### `default.json`
 

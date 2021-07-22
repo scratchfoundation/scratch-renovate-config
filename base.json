@@ -4,7 +4,7 @@
   "extends": [
     "config:base",
     ":semanticCommits",
-    ":separateMultipleMajorReleases"
+    ":separateMajorReleases"
   ],
   "timezone": "America/New_York",
 
