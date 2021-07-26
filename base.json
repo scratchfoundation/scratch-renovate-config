@@ -14,7 +14,7 @@
 
   "stabilityDays": 3,
 
-  "addLabels": ["dependencies"],
+  "labels": ["dependencies"],
 
   "vulnerabilityAlerts": {
     "addLabels": ["security"]
