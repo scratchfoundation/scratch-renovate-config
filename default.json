@@ -14,7 +14,7 @@
     },
     {
       "$comment": "enable auto-merge for all updates of LLK packages which don't yet use semver",
-      "matchCurrentVersion": "^0.*-prerelease",
+      "matchCurrentVersion": "/^0.*-prerelease/",
       "matchSourceUrlPrefixes": [
         "git+https://github.com/LLK/",
         "git+ssh://git@github.com/LLK/",
