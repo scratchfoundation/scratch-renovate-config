@@ -22,7 +22,7 @@
 
   "packageRules": [
     {
-      "$comment": "exempt LLK packages from stabilityDays requirement",
+      "$comment": "handle LLK packages first (higher priority) and exempt them from stabilityDays requirement",
       "matchSourceUrlPrefixes": [
         "git+https://github.com/LLK/",
         "git+ssh://git@github.com/LLK/",
@@ -30,6 +30,7 @@
         "git@github.com:LLK/",
         "https://github.com/LLK/"
       ],
+      "prPriority": 5,
       "stabilityDays": 0
     }
   ]
