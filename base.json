@@ -22,6 +22,7 @@
 
   "packageRules": [
     {
+      "$comment": "exempt LLK packages from stabilityDays requirement",
       "matchSourceUrlPrefixes": [
         "git+https://github.com/LLK/",
         "git+ssh://git@github.com/LLK/",

@@ -7,8 +7,21 @@
 
   "packageRules": [
     {
+      "$comment": "enable auto-merge for minor & patch updates of LLK packages which use semver",
       "matchCurrentVersion": "!/^0/",
       "matchUpdateTypes": ["minor", "patch"],
+      "matchSourceUrlPrefixes": [
+        "git+https://github.com/LLK/",
+        "git+ssh://git@github.com/LLK/",
+        "git://github.com/LLK/",
+        "git@github.com:LLK/",
+        "https://github.com/LLK/"
+      ],
+      "automerge": true
+    },
+    {
+      "$comment": "enable auto-merge for all updates of LLK packages which don't yet use semver",
+      "matchCurrentVersion": "^0.*-prerelease",
       "matchSourceUrlPrefixes": [
         "git+https://github.com/LLK/",
         "git+ssh://git@github.com/LLK/",
