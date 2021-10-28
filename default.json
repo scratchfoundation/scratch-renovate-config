@@ -10,7 +10,8 @@
       "$comment": "enable auto-merge for minor & patch updates of all packages which use semver",
       "matchCurrentVersion": "!/^0/",
       "matchUpdateTypes": ["minor", "patch"],
-      "automerge": true
+      "automerge": true,
+      "rebaseWhen": "behind-base-branch"
     },
     {
       "$comment": "enable auto-merge for all updates of LLK packages which don't yet use semver",
@@ -22,7 +23,8 @@
         "git@github.com:LLK/",
         "https://github.com/LLK/"
       ],
-      "automerge": true
+      "automerge": true,
+      "rebaseWhen": "behind-base-branch"
     }
   ]
 }

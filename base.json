@@ -14,6 +14,9 @@
 
   "stabilityDays": 3,
 
+  "rebaseWhen$comment": "set this to 'never' to reduce CI load; add 'rebase' label to tell Renovate to rebase",
+  "rebaseWhen": "never",
+
   "labels": ["dependencies"],
 
   "vulnerabilityAlerts": {
