@@ -14,7 +14,7 @@
       "rebaseWhen": "behind-base-branch"
     },
     {
-      "$comment": "enable auto-merge for all updates of LLK packages which don't yet use semver",
+      "$comment": "enable auto-merge for all updates of internal dependencies which don't yet use semver",
       "matchCurrentVersion": "/^0.*-prerelease/",
       "matchSourceUrlPrefixes": [
         "git+https://github.com/LLK/",
