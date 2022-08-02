@@ -25,7 +25,7 @@
 
   "packageRules": [
     {
-      "$comment": "handle LLK packages first (higher priority) and exempt them from stabilityDays requirement",
+      "$comment": "handle internal dependencies first (higher priority) and exempt them from stabilityDays requirement",
       "matchSourceUrlPrefixes": [
         "git+https://github.com/LLK/",
         "git+ssh://git@github.com/LLK/",
@@ -34,7 +34,15 @@
         "https://github.com/LLK/"
       ],
       "prPriority": 5,
-      "stabilityDays": 0
+      "stabilityDays": 0,
+      "minor": {
+        "$comment": "A minor bump to an internal dependency should cause a minor bump in this package's version",
+        "semanticCommitType": "feat"
+      },
+      "patch": {
+        "$comment": "A patch bump to an internal dependency should cause a patch bump in this package's version",
+        "semanticCommitType": "fix"
+      }
     }
   ]
 }
