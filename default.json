@@ -17,6 +17,11 @@
       "$comment": "enable auto-merge for all updates of internal dependencies which don't yet use semver",
       "matchCurrentVersion": "/^0.*-prerelease/",
       "matchSourceUrlPrefixes": [
+        "git+https://github.com/scratchfoundation/",
+        "git+ssh://git@github.com/scratchfoundation/",
+        "git://github.com/scratchfoundation/",
+        "git@github.com:scratchfoundation/",
+        "https://github.com/scratchfoundation/",
         "git+https://github.com/LLK/",
         "git+ssh://git@github.com/LLK/",
         "git://github.com/LLK/",

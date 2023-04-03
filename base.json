@@ -27,6 +27,11 @@
     {
       "$comment": "handle internal dependencies first (higher priority) and exempt them from stabilityDays requirement",
       "matchSourceUrlPrefixes": [
+        "git+https://github.com/scratchfoundation/",
+        "git+ssh://git@github.com/scratchfoundation/",
+        "git://github.com/scratchfoundation/",
+        "git@github.com:scratchfoundation/",
+        "https://github.com/scratchfoundation/",
         "git+https://github.com/LLK/",
         "git+ssh://git@github.com/LLK/",
         "git://github.com/LLK/",
