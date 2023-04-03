@@ -7,9 +7,9 @@
 
   "packageRules": [
     {
-      "$comment": "enable auto-merge for minor & patch updates of internal dependencies which use semver",
+      "$comment": "enable auto-merge for minor, patch, and in-range updates of internal dependencies which use semver",
       "matchCurrentVersion": "!/^0/",
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchUpdateTypes": ["minor", "patch", "lockFileMaintenance"],
       "matchSourceUrlPrefixes": [
         "git+https://github.com/LLK/",
         "git+ssh://git@github.com/LLK/",

@@ -7,9 +7,9 @@
 
   "packageRules": [
     {
-      "$comment": "enable auto-merge for minor & patch updates of all packages which use semver",
+      "$comment": "enable auto-merge for minor, patch, and in-range updates of all packages which use semver",
       "matchCurrentVersion": "!/^0/",
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchUpdateTypes": ["minor", "patch", "lockFileMaintenance"],
       "automerge": true,
       "rebaseWhen": "behind-base-branch"
     },
