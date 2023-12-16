@@ -55,9 +55,9 @@
         "eslint-config-scratch",
 
         "@babel/eslint-parser",
+        "babel-eslint",
         "eslint",
-        "eslint-plugin-import",
-        "eslint-plugin-react"
+        "eslint-plugin-*"
       ]
     }
   ]
