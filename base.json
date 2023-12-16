@@ -47,6 +47,18 @@
         "description": "A patch bump to an internal dependency should cause a patch bump in this package's version",
         "semanticCommitType": "fix"
       }
+    },
+    {
+      "description": "group eslint-config-scratch with other eslint packages that often must be upgraded together",
+      "groupName": "eslint-config-scratch",
+      "matchPackageNames": [
+        "eslint-config-scratch",
+
+        "@babel/eslint-parser",
+        "eslint",
+        "eslint-plugin-import",
+        "eslint-plugin-react"
+      ]
     }
   ]
 }
