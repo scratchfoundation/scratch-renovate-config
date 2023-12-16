@@ -2,7 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
 
   "extends": [
-    "config:base",
+    "config:recommended",
     ":semanticCommits",
     ":separateMajorReleases"
   ],
@@ -12,7 +12,7 @@
 
   "prHourlyLimit": 5,
 
-  "stabilityDays": 3,
+  "minimumReleaseAge": "3 days",
 
   "rebaseWhen": "never",
 
@@ -38,7 +38,7 @@
         "https://github.com/LLK/"
       ],
       "prPriority": 5,
-      "stabilityDays": 0,
+      "minimumReleaseAge": null,
       "minor": {
         "description": "A minor bump to an internal dependency should cause a minor bump in this package's version",
         "semanticCommitType": "feat"
