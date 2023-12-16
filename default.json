@@ -7,14 +7,14 @@
 
   "packageRules": [
     {
-      "$comment": "enable auto-merge for minor, patch, and in-range updates of all packages which use semver",
+      "description": "enable auto-merge for minor, patch, and in-range updates of all packages which use semver",
       "matchCurrentVersion": "!/^0/",
       "matchUpdateTypes": ["minor", "patch", "lockFileMaintenance"],
       "automerge": true,
       "rebaseWhen": "behind-base-branch"
     },
     {
-      "$comment": "enable auto-merge for all updates of internal dependencies which don't yet use semver",
+      "description": "enable auto-merge for all updates of internal dependencies which don't yet use semver",
       "matchCurrentVersion": "/^0.*-prerelease/",
       "matchSourceUrlPrefixes": [
         "git+https://github.com/scratchfoundation/",

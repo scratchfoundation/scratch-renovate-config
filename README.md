@@ -42,3 +42,11 @@ to the "stability days" settings from `base.json`.
 ### `conservative.json`
 
 This enables automatic merging of major and minor releases for only LLK dependencies.
+
+## Contributing
+
+Before submitting a pull request, please validate your changes:
+
+```sh
+npx --package=renovate@latest renovate-config-validator *.json
+```
