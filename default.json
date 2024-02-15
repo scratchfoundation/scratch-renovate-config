@@ -7,6 +7,12 @@
 
   "packageRules": [
     {
+      "description": "enable auto-merge for 'pin dependencies' updates",
+      "matchUpdateTypes": ["pin"],
+      "automerge": true,
+      "rebaseWhen": "behind-base-branch"
+    },
+    {
       "description": "enable auto-merge for minor, patch, and in-range updates of all packages which use semver",
       "matchCurrentVersion": "!/^0/",
       "matchUpdateTypes": ["minor", "patch", "lockFileMaintenance"],
