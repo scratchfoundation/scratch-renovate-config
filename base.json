@@ -52,6 +52,7 @@
     {
       "description": "group eslint-config-scratch with other eslint packages that often must be upgraded together",
       "groupName": "eslint-config-scratch",
+      "matchUpdateTypes": ["major", "minor", "patch", "digest"],
       "matchPackageNames": [
         "eslint-config-scratch",
 
