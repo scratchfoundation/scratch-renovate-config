@@ -18,6 +18,12 @@
 
   "labels": ["dependencies"],
 
+  "lockFileMaintenance": {
+    "enabled": true,
+    "recreateWhen": "auto",
+    "schedule": ["at any time"]
+  },
+
   "vulnerabilityAlerts": {
     "addLabels": ["security"]
   },
