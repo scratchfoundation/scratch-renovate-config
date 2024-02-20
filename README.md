@@ -12,9 +12,9 @@ Use the `extends` array within your Renovate configuration file to extend one of
 
 Name | File
 --- | ---
-`github>LLK/scratch-renovate-config:base` | `base.json`
-`github>LLK/scratch-renovate-config` | `default.json`
-`github>LLK/scratch-renovate-config:conservative` | `conservative.json`
+`github>scratchfoundation/scratch-renovate-config:base` | `base.json`
+`github>scratchfoundation/scratch-renovate-config` | `default.json`
+`github>scratchfoundation/scratch-renovate-config:conservative` | `conservative.json`
 
 ### `base.json`
 
