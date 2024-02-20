@@ -3,7 +3,6 @@
 
   "extends": [
     "config:best-practices",
-    ":pinOnlyDevDependencies",
     ":semanticCommits",
     ":separateMajorReleases"
   ],

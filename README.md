@@ -14,6 +14,8 @@ Name | File
 --- | ---
 `github>scratchfoundation/scratch-renovate-config:base` | `base.json`
 `github>scratchfoundation/scratch-renovate-config` | `default.json`
+`github>scratchfoundation/scratch-renovate-config:js-lib` | `js-lib.json`
+`github>scratchfoundation/scratch-renovate-config:js-app` | `js-app.json`
 `github>scratchfoundation/scratch-renovate-config:conservative` | `conservative.json`
 
 ### `base.json`
@@ -37,11 +39,19 @@ The common configuration in this file includes:
 ### `default.json`
 
 This enables automatic merging of minor and patch releases. Dependencies outside of the LLK organization are subject
-to the "stability days" settings from `base.json`.
+to the "stability days" settings from `base.json`. This can be used directly, but the `js-lib` and `js-app`
+configurations may be more appropriate.
+
+### `js-lib.json` and `js-app.json`
+
+These build on the `default.json` configuration and enables pinning according to the recommendations found
+[here](https://docs.renovatebot.com/dependency-pinning/). In short, `js-lib` enables pinning of only `devDependencies`
+and `js-app` enables pinning of all except `peerDependencies`. These are intended to be the Scratch versions of
+Renovate's built-in `config:js-lib` and `config:js-app` presets.
 
 ### `conservative.json`
 
-This enables automatic merging of major and minor releases for only LLK dependencies.
+This legacy configuration enables automatic merging of major and minor releases for only LLK dependencies.
 
 ## Contributing
 

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
+  "description": "Scratch Foundation's Renovate configuration for JavaScript apps like scratch-www and scratch-desktop, as opposed to JS libraries.",
+
+  "extends": [
+    "github>scratchfoundation/scratch-renovate-config:default",
+    ":pinAllExceptPeerDependencies"
+  ]
+}

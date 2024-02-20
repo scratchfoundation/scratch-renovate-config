@@ -1,0 +1,10 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
+  "description": "Scratch Foundation's Renovate configuration for JavaScript libraries like scratch-gui and scratch-vm, as opposed to JS apps.",
+
+  "extends": [
+    "github>scratchfoundation/scratch-renovate-config:default",
+    ":pinOnlyDevDependencies"
+  ]
+}
