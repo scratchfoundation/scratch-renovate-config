@@ -5,6 +5,10 @@
     "github>scratchfoundation/scratch-renovate-config:base"
   ],
 
+  "lockFileMaintenance": {
+    "automerge": true
+  },
+
   "packageRules": [
     {
       "description": "enable auto-merge for 'pin dependencies' updates",
