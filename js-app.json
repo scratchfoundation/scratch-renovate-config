@@ -6,5 +6,9 @@
   "extends": [
     "github>scratchfoundation/scratch-renovate-config:default",
     ":pinAllExceptPeerDependencies"
-  ]
+  ],
+
+  "lockFileMaintenance": {
+    "semanticCommitType": "fix"
+  }
 }
