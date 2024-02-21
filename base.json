@@ -20,6 +20,7 @@
 
   "lockFileMaintenance": {
     "enabled": true,
+    "rebaseWhen": "conflicted",
     "recreateWhen": "auto",
     "schedule": ["at any time"]
   },
