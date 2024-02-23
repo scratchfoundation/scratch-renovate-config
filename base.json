@@ -46,6 +46,7 @@
       ],
       "prPriority": 5,
       "minimumReleaseAge": null,
+      "addLabels": ["internal dependency"],
       "minor": {
         "description": "A minor bump to an internal dependency should cause a minor bump in this package's version",
         "semanticCommitType": "feat"
