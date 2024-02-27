@@ -61,6 +61,11 @@
       "description": "eslint-config-scratch should not cause a new release (also avoids circular dependency)",
       "matchPackageNames": ["eslint-config-scratch"],
       "semanticCommitType": "style"
+    },
+    {
+      "description": "allow choosing Node upgrades from the full menu",
+      "matchPackageNames": ["node"],
+      "separateMultipleMajor": true
     }
   ]
 }
