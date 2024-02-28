@@ -6,7 +6,13 @@
   ],
 
   "lockFileMaintenance": {
-    "automerge": true
+    "description": "Automatically merge lock file updates. Tuned for less noise.",
+    "automerge": true,
+    "automergeType": "branch",
+    "automergeSchedule": [
+      "after 1am",
+      "before 6am"
+    ]
   },
 
   "packageRules": [
