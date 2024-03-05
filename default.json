@@ -10,8 +10,7 @@
     "automerge": true,
     "automergeType": "branch",
     "automergeSchedule": [
-      "after 1am",
-      "before 6am"
+      "after 1:00am and before 6:00am"
     ]
   },
 
