@@ -18,15 +18,13 @@
     {
       "description": "enable auto-merge for 'pin dependencies' updates",
       "matchUpdateTypes": ["pin"],
-      "automerge": true,
-      "rebaseWhen": "behind-base-branch"
+      "automerge": true
     },
     {
       "description": "enable auto-merge for minor, patch, and in-range updates of all packages which use semver",
       "matchCurrentVersion": "!/^0/",
       "matchUpdateTypes": ["minor", "patch", "lockFileMaintenance"],
-      "automerge": true,
-      "rebaseWhen": "behind-base-branch"
+      "automerge": true
     },
     {
       "description": "enable auto-merge for all updates of internal dependencies which don't yet use semver",
@@ -43,8 +41,7 @@
         "git@github.com:LLK/",
         "https://github.com/LLK/"
       ],
-      "automerge": true,
-      "rebaseWhen": "behind-base-branch"
+      "automerge": true
     }
   ]
 }

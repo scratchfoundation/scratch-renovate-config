@@ -14,14 +14,13 @@
 
   "minimumReleaseAge": "3 days",
 
-  "rebaseWhen": "never",
+  "rebaseWhen": "auto",
+  "recreateWhen": "auto",
 
   "labels": ["dependencies"],
 
   "lockFileMaintenance": {
     "enabled": true,
-    "rebaseWhen": "conflicted",
-    "recreateWhen": "auto",
     "schedule": ["at any time"]
   },
 
