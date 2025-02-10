@@ -22,7 +22,8 @@
         "git@github.com:LLK/",
         "https://github.com/LLK/"
       ],
-      "automerge": true
+      "automerge": true,
+      "rebaseWhen": "auto"
     },
     {
       "description": "enable auto-merge for all updates of internal dependencies which don't yet use semver",
@@ -39,7 +40,8 @@
         "git@github.com:LLK/",
         "https://github.com/LLK/"
       ],
-      "automerge": true
+      "automerge": true,
+      "rebaseWhen": "auto"
     }
   ]
 }

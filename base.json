@@ -14,7 +14,7 @@
 
   "minimumReleaseAge": "3 days",
 
-  "rebaseWhen": "auto",
+  "rebaseWhen": "conflicted",
   "recreateWhen": "auto",
 
   "labels": ["dependencies"],
