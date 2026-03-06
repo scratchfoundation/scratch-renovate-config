@@ -22,9 +22,9 @@
       "rebaseWhen": "auto"
     },
     {
-      "description": "enable auto-merge for minor, patch, and in-range updates of all packages which use semver",
+      "description": "enable auto-merge for minor, patch, digest, and in-range updates of all packages which use semver",
       "matchCurrentVersion": "!/^0/",
-      "matchUpdateTypes": ["minor", "patch", "lockFileMaintenance"],
+      "matchUpdateTypes": ["minor", "patch", "digest", "lockFileMaintenance"],
       "automerge": true,
       "rebaseWhen": "auto"
     },
