@@ -3,7 +3,6 @@
 
   "extends": [
     "config:best-practices",
-    ":semanticCommits",
     ":separateMajorReleases"
   ],
   "timezone": "America/New_York",
@@ -20,9 +19,7 @@
   "labels": ["dependencies"],
 
   "lockFileMaintenance": {
-    "enabled": true,
-    "rebaseWhen": "auto",
-    "schedule": ["at any time"]
+    "rebaseWhen": "auto"
   },
 
   "vulnerabilityAlerts": {
@@ -31,18 +28,10 @@
 
   "packageRules": [
     {
-      "description": "handle internal dependencies first (higher priority) and exempt them from stabilityDays requirement",
-      "matchSourceUrlPrefixes": [
-        "git+https://github.com/scratchfoundation/",
-        "git+ssh://git@github.com/scratchfoundation/",
-        "git://github.com/scratchfoundation/",
-        "git@github.com:scratchfoundation/",
-        "https://github.com/scratchfoundation/",
-        "git+https://github.com/LLK/",
-        "git+ssh://git@github.com/LLK/",
-        "git://github.com/LLK/",
-        "git@github.com:LLK/",
-        "https://github.com/LLK/"
+      "description": "handle internal dependencies first (higher priority) and exempt them from minimumReleaseAge requirement",
+      "matchSourceUrls": [
+        "https://github.com/scratchfoundation/**",
+        "https://github.com/LLK/**"
       ],
       "prPriority": 5,
       "minimumReleaseAge": null,

@@ -5,7 +5,7 @@
 
   "extends": [
     "github>scratchfoundation/scratch-renovate-config:default",
-    ":pinAllExceptPeerDependencies"
+    ":pinDependencies"
   ],
 
   "lockFileMaintenance": {
