@@ -31,7 +31,7 @@ The common configuration in this file includes:
 * enable "semantic commit" rules:
   * use `fix` for `dependencies`
   * use `chore` for `devDependencies`
-* require 3 "stability days" before automatically merging non-LLK dependencies
+* require 3 days of `minimumReleaseAge` before automatically merging external dependencies
   * this configuration does not enable automatic merges but does preconfigure this setting
 * label all Renovate PRs with `dependencies`
   * add the `security` label for any PR associated with a GitHub Security Vulnerability
@@ -39,16 +39,16 @@ The common configuration in this file includes:
 
 ### `default.json`
 
-This enables automatic merging of minor and patch releases. Dependencies outside of the LLK organization are subject
-to the "stability days" settings from `base.json`. This can be used directly, but the `js-lib` and `js-app`
-configurations may be more appropriate.
+This enables automatic merging of minor and patch releases. External dependencies are subject to the
+`minimumReleaseAge` setting from `base.json`. This can be used directly, but the `js-lib` and `js-app` configurations
+may be more appropriate.
 
 ### `js-*.json`
 
-These build on the `default.json` configuration and enables pinning according to the recommendations found
-[here](https://docs.renovatebot.com/dependency-pinning/). In short, `js-lib` enables pinning of only `devDependencies`
-and `js-app` enables pinning of all except `peerDependencies`. These are intended to be the Scratch versions of
-Renovate's built-in `config:js-lib` and `config:js-app` presets.
+These build on the `default.json` configuration and enable pinning according to
+[Renovate's dependency pinning recommendations](https://docs.renovatebot.com/dependency-pinning/). In short, `js-lib`
+enables pinning of only `devDependencies` and `js-app` enables pinning of all except `peerDependencies`. These are
+intended to be the Scratch versions of Renovate's built-in `config:js-lib` and `config:js-app` presets.
 
 The `js-lib-bundled` configuration is a variant of `js-lib` designed for libraries that use a bundler (`webpack`,
 etc.) to build their npm package. It treats `lockFileMaintenance` PRs as `fix` instead of `chore`. For rationale, see
@@ -56,7 +56,7 @@ the "About Pinning" section below.
 
 ### `conservative.json`
 
-This legacy configuration enables automatic merging of major and minor releases for only LLK dependencies.
+This legacy configuration enables automatic merging of major and minor releases for only internal dependencies.
 
 ## About Pinning
 
@@ -75,8 +75,8 @@ updates from `1.0.0` to `1.1.0`. Suppose neither `scratch-gui` nor `scratch-www`
 1. `scratch-vm`, where `foo` is listed as `^1.0.0`, will receive a `lockFileMaintenance` PR to update `foo`.
    * For a "normal" npm module, this PR would be unable to affect user-visible behavior, because it will not affect
      `package.json` or any other file.
-   * Since `scratch-vm` uses `webpack`, dependencies like `foo` are likely to be included in the build output, thus this
-     PR _could_ cause user-visible behavior changes.
+   * Since `scratch-vm` uses `webpack`, dependencies like `foo` are likely to be included in the build output, thus
+     this PR _could_ cause user-visible behavior changes.
      * If `scratch-vm`'s build output is used by an app, then `scratch-vm`'s `lockFileMaintenance` PR could cause
        user-visible behavior changes in that app, implying that this _should_ cause a `scratch-vm` release.
      * If the app uses `scratch-vm`'s source instead of its build output, then `scratch-vm`'s `lockFileMaintenance` PR
@@ -87,9 +87,9 @@ updates from `1.0.0` to `1.1.0`. Suppose neither `scratch-gui` nor `scratch-www`
    * If `scratch-www` uses `scratch-vm`'s build output, then `scratch-www`'s `lockFileMaintenance` PR will not cause
      user-visible behavior changes in `scratch-www`. The app would receive any user-facing impact from the `foo`
      update when `scratch-www` updates its `scratch-vm` dependency.
-   * If `scratch-www` uses `scratch-vm`'s source, then `scratch-www`'s `lockFileMaintenance` PR will cause user-visible
-     behavior changes in `scratch-www`. The app could receive some user-facing impact from the `foo` update here and
-     some from the `scratch-vm` update, or only one or the other.
+   * If `scratch-www` uses `scratch-vm`'s source, then `scratch-www`'s `lockFileMaintenance` PR will cause
+     user-visible behavior changes in `scratch-www`. The app could receive some user-facing impact from the `foo`
+     update here and some from the `scratch-vm` update, or only one or the other.
 
 In other words, by using `webpack` (or any bundler) at the library level, we have made it difficult to predict the
 effects of a `lockFileMaintenance` PR and blurred the meaning of `dependencies` vs. `devDependencies`. Ideally, we

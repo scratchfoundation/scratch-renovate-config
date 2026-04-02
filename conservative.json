@@ -10,17 +10,9 @@
       "description": "enable auto-merge for minor, patch, and in-range updates of internal dependencies which use semver",
       "matchCurrentVersion": "!/^0/",
       "matchUpdateTypes": ["minor", "patch", "lockFileMaintenance"],
-      "matchSourceUrlPrefixes": [
-        "git+https://github.com/scratchfoundation/",
-        "git+ssh://git@github.com/scratchfoundation/",
-        "git://github.com/scratchfoundation/",
-        "git@github.com:scratchfoundation/",
-        "https://github.com/scratchfoundation/",
-        "git+https://github.com/LLK/",
-        "git+ssh://git@github.com/LLK/",
-        "git://github.com/LLK/",
-        "git@github.com:LLK/",
-        "https://github.com/LLK/"
+      "matchSourceUrls": [
+        "https://github.com/scratchfoundation/**",
+        "https://github.com/LLK/**"
       ],
       "automerge": true,
       "rebaseWhen": "auto"
@@ -28,17 +20,9 @@
     {
       "description": "enable auto-merge for all updates of internal dependencies which don't yet use semver",
       "matchCurrentVersion": "/^0.*-prerelease/",
-      "matchSourceUrlPrefixes": [
-        "git+https://github.com/scratchfoundation/",
-        "git+ssh://git@github.com/scratchfoundation/",
-        "git://github.com/scratchfoundation/",
-        "git@github.com:scratchfoundation/",
-        "https://github.com/scratchfoundation/",
-        "git+https://github.com/LLK/",
-        "git+ssh://git@github.com/LLK/",
-        "git://github.com/LLK/",
-        "git@github.com:LLK/",
-        "https://github.com/LLK/"
+      "matchSourceUrls": [
+        "https://github.com/scratchfoundation/**",
+        "https://github.com/LLK/**"
       ],
       "automerge": true,
       "rebaseWhen": "auto"
