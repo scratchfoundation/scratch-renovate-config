@@ -35,6 +35,7 @@ The common configuration in this file includes:
   * this configuration does not enable automatic merges but does preconfigure this setting
 * label all Renovate PRs with `dependencies`
   * add the `security` label for any PR associated with a GitHub Security Vulnerability
+* pin `devDependencies` to exact versions (via `config:best-practices`)
 * separate major updates from minor/patch updates: if both are available, open two separate PRs
 
 ### `default.json`
@@ -45,9 +46,10 @@ may be more appropriate.
 
 ### `js-*.json`
 
-These build on the `default.json` configuration and enable pinning according to
-[Renovate's dependency pinning recommendations](https://docs.renovatebot.com/dependency-pinning/). In short, `js-lib`
-enables pinning of only `devDependencies` and `js-app` enables pinning of all except `peerDependencies`. These are
+These build on the `default.json` configuration and add pinning according to
+[Renovate's dependency pinning recommendations](https://docs.renovatebot.com/dependency-pinning/). Since
+`devDependencies` are already pinned by `config:best-practices` (via `base.json`), `js-app` additionally pins
+production `dependencies`. `js-lib` does not add any extra pinning beyond what `base.json` provides. These are
 intended to be the Scratch versions of Renovate's built-in `config:js-lib` and `config:js-app` presets.
 
 The `js-lib-bundled` configuration is a variant of `js-lib` designed for libraries that use a bundler (`webpack`,
@@ -62,12 +64,10 @@ This legacy configuration enables automatic merging of major and minor releases 
 
 _See [Renovate's documentation](https://docs.renovatebot.com/dependency-pinning/) for more information._
 
-The `js-lib` and `js-app` configurations enable pinning of dependencies according to Renovate's recommendations:
+All configurations pin `devDependencies` to exact versions (via `config:best-practices` in `base.json`). The `js-app`
+configuration additionally pins production `dependencies`.
 
-* `devDependencies` are pinned to exact versions everywhere
-* `dependencies` are pinned to exact versions for `js-app` but use `^x.y.z` in repos using `js-lib`
-
-**Together, this means that non-dev dependencies of our libraries are pinned at the app level only.**
+**Together, this means that non-dev dependencies of libraries are pinned at the app level only.**
 
 More specifically, suppose `scratch-vm` uses a library `foo` as a `dependency` (not `devDependency`), and `foo`
 updates from `1.0.0` to `1.1.0`. Suppose neither `scratch-gui` nor `scratch-www` use `foo` as a direct dependency.
