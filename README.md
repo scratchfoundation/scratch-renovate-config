@@ -24,19 +24,26 @@ Name | File
 This applies basic configuration without any automatic merge rules. It's intended to be used by the other
 configurations in this repository, not by itself.
 
-The common configuration in this file includes:
+This extends `config:best-practices`, which provides (among other things):
+
+* semantic commit rules (`fix` for `dependencies`, `chore` for `devDependencies`)
+* pin `devDependencies` to exact versions
+* weekly lock file maintenance
+
+On top of that, `base.json` adds:
 
 * set time zone to Scratch time (`America/New_York`)
 * remove concurrent PR limit
-* enable "semantic commit" rules:
-  * use `fix` for `dependencies`
-  * use `chore` for `devDependencies`
 * require 3 days of `minimumReleaseAge` before automatically merging external dependencies
   * this configuration does not enable automatic merges but does preconfigure this setting
 * label all Renovate PRs with `dependencies`
   * add the `security` label for any PR associated with a GitHub Security Vulnerability
-* pin `devDependencies` to exact versions (via `config:best-practices`)
 * separate major updates from minor/patch updates: if both are available, open two separate PRs
+* identify internal dependencies by source URL and give them higher priority, exempt them from `minimumReleaseAge`,
+  and adjust semantic commit types so that internal dependency bumps trigger appropriate version bumps downstream
+
+Note: `matchSourceUrls` patterns use only `https://` URLs because Renovate normalizes all source URLs (including
+`git+ssh://`, `git://`, `git@host:`, etc.) to `https://` before matching.
 
 ### `default.json`
 
