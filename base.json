@@ -13,6 +13,10 @@
 
   "minimumReleaseAge": "3 days",
 
+  "constraints": {
+    "npm": "^11"
+  },
+
   "rebaseWhen": "never",
   "recreateWhen": "auto",
 
@@ -46,6 +50,11 @@
         "addLabels": ["internal dependency"],
         "semanticCommitType": "fix"
       }
+    },
+    {
+      "description": "digest updates have no release timestamp, so minimumReleaseAge would hold them forever",
+      "matchUpdateTypes": ["digest"],
+      "minimumReleaseAge": null
     },
     {
       "description": "eslint-config-scratch should not cause a new release (also avoids circular dependency)",

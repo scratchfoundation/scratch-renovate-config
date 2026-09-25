@@ -36,6 +36,10 @@ On top of that, `base.json` adds:
 * remove concurrent PR limit
 * require 3 days of `minimumReleaseAge` before automatically merging external dependencies
   * this configuration does not enable automatic merges but does preconfigure this setting
+  * digest updates are exempt, since they carry no release timestamp and would otherwise never qualify
+* run npm 11 for lock file updates (`constraints.npm`)
+  * npm 12 refuses to regenerate lock files that include a package with `bundleDependencies`, such as `npm` itself
+    (npm/cli#9800); revisit once that is fixed
 * label all Renovate PRs with `dependencies`
   * add the `security` label for any PR associated with a GitHub Security Vulnerability
 * separate major updates from minor/patch updates: if both are available, open two separate PRs
