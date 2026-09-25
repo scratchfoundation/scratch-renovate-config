@@ -34,17 +34,18 @@ This extends `config:best-practices`, which provides (among other things):
 
 On top of that, `base.json` adds:
 
-* set time zone to Scratch time (`America/New_York`)
-* remove concurrent PR limit
-* apply the same 3-day `minimumReleaseAge` to GitHub Actions version updates
-  * this configuration does not enable automatic merges but does preconfigure this setting
+* the same 3-day `minimumReleaseAge` for Rust crates and Python packages (`security:minimumReleaseAgeCrate`,
+  `security:minimumReleaseAgePypi`)
+* the same 3-day `minimumReleaseAge` for GitHub Actions version updates, which has no built-in preset
   * digest updates are left out, since they carry no release timestamp and would otherwise never qualify
+* set time zone to Scratch time (`:timezone(America/New_York)`)
+* remove the concurrent PR limit (`:prConcurrentLimitNone`) and open at most 4 PRs per hour (`:prHourlyLimit4`)
 * run npm 11 for lock file updates (`constraints.npm`)
   * npm 12 refuses to regenerate lock files that include a package with `bundleDependencies`, such as `npm` itself
     (npm/cli#9800); revisit once that is fixed
-* label all Renovate PRs with `dependencies`
+* label all Renovate PRs with `dependencies` (`:label(dependencies)`)
   * add the `security` label for any PR associated with a GitHub Security Vulnerability
-* separate major updates from minor/patch updates: if both are available, open two separate PRs
+* only rebase PRs on request, except lock file maintenance, which rebases automatically
 * identify internal dependencies by source URL and give them higher priority, exempt them from `minimumReleaseAge`,
   and adjust semantic commit types so that internal dependency bumps trigger appropriate version bumps downstream
 
@@ -53,9 +54,11 @@ Note: `matchSourceUrls` patterns use only `https://` URLs because Renovate norma
 
 ### `default.json`
 
-This enables automatic merging of minor and patch releases. External npm packages and GitHub Actions are subject to
-the `minimumReleaseAge` settings described for `base.json`. This can be used directly, but the `js-lib` and `js-app`
-configurations may be more appropriate.
+This enables automatic merging of minor and patch releases of packages at version 1.0 or later
+(`:automergeStableNonMajor`), digest updates (`:automergeDigest`), pinning, and prerelease internal dependencies. Lock
+file maintenance merges directly to the base branch (`:automergeBranch`) before 4 AM (`schedule:automergeDaily`).
+External dependencies are subject to the `minimumReleaseAge` settings described for `base.json`. This can be used
+directly, but the `js-lib` and `js-app` configurations may be more appropriate.
 
 ### `js-*.json`
 
@@ -71,7 +74,8 @@ the "About Pinning" section below.
 
 ### `conservative.json`
 
-This legacy configuration enables automatic merging of major and minor releases for only internal dependencies.
+This legacy configuration enables automatic merging of minor and patch releases for only internal dependencies, plus
+lock file maintenance.
 
 ## About Pinning
 

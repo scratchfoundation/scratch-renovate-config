@@ -3,22 +3,19 @@
 
   "extends": [
     "config:best-practices",
-    ":separateMajorReleases"
+    "security:minimumReleaseAgeCrate",
+    "security:minimumReleaseAgePypi",
+    ":timezone(America/New_York)",
+    ":prConcurrentLimitNone",
+    ":prHourlyLimit4",
+    ":label(dependencies)"
   ],
-  "timezone": "America/New_York",
-
-  "prConcurrentLimit": 0,
-
-  "prHourlyLimit": 5,
 
   "constraints": {
     "npm": "^11"
   },
 
   "rebaseWhen": "never",
-  "recreateWhen": "auto",
-
-  "labels": ["dependencies"],
 
   "lockFileMaintenance": {
     "rebaseWhen": "auto"
@@ -30,7 +27,7 @@
 
   "packageRules": [
     {
-      "description": "wait 3 days before GitHub Actions version updates, matching what security:minimumReleaseAgeNpm (via config:best-practices) does for npm; digest updates have no release timestamp, so they are not included",
+      "description": "wait 3 days before GitHub Actions version updates, matching the security:minimumReleaseAge* presets extended above (Renovate has none for GitHub Actions); digest updates have no release timestamp, so they are not included",
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["major", "minor", "patch"],
       "minimumReleaseAge": "3 days"
