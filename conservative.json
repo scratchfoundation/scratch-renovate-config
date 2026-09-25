@@ -5,11 +5,16 @@
     "github>scratchfoundation/scratch-renovate-config:base"
   ],
 
+  "lockFileMaintenance": {
+    "description": "Automatically merge lock file updates (in-range updates).",
+    "automerge": true
+  },
+
   "packageRules": [
     {
-      "description": "enable auto-merge for minor, patch, and in-range updates of internal dependencies which use semver",
+      "description": "enable auto-merge for minor and patch updates of internal dependencies which use semver",
       "matchCurrentVersion": "!/^0/",
-      "matchUpdateTypes": ["minor", "patch", "lockFileMaintenance"],
+      "matchUpdateTypes": ["minor", "patch"],
       "matchSourceUrls": [
         "https://github.com/scratchfoundation/**",
         "https://github.com/LLK/**"
