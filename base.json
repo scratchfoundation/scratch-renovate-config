@@ -11,8 +11,6 @@
 
   "prHourlyLimit": 5,
 
-  "minimumReleaseAge": "3 days",
-
   "constraints": {
     "npm": "^11"
   },
@@ -32,6 +30,12 @@
 
   "packageRules": [
     {
+      "description": "wait 3 days before GitHub Actions version updates, matching what security:minimumReleaseAgeNpm (via config:best-practices) does for npm; digest updates have no release timestamp, so they are not included",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["major", "minor", "patch"],
+      "minimumReleaseAge": "3 days"
+    },
+    {
       "description": "handle internal dependencies first (higher priority) and exempt them from minimumReleaseAge requirement",
       "matchSourceUrls": [
         "https://github.com/scratchfoundation/**",
@@ -50,11 +54,6 @@
         "addLabels": ["internal dependency"],
         "semanticCommitType": "fix"
       }
-    },
-    {
-      "description": "digest updates have no release timestamp, so minimumReleaseAge would hold them forever",
-      "matchUpdateTypes": ["digest"],
-      "minimumReleaseAge": null
     },
     {
       "description": "eslint-config-scratch should not cause a new release (also avoids circular dependency)",

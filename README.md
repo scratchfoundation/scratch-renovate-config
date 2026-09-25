@@ -29,14 +29,16 @@ This extends `config:best-practices`, which provides (among other things):
 * semantic commit rules (`fix` for `dependencies`, `chore` for `devDependencies`)
 * pin `devDependencies` to exact versions
 * weekly lock file maintenance
+* a 3-day `minimumReleaseAge` for npm packages (`security:minimumReleaseAgeNpm`), which exempts update types that
+  carry no release timestamp, such as lock file maintenance and pinning
 
 On top of that, `base.json` adds:
 
 * set time zone to Scratch time (`America/New_York`)
 * remove concurrent PR limit
-* require 3 days of `minimumReleaseAge` before automatically merging external dependencies
+* apply the same 3-day `minimumReleaseAge` to GitHub Actions version updates
   * this configuration does not enable automatic merges but does preconfigure this setting
-  * digest updates are exempt, since they carry no release timestamp and would otherwise never qualify
+  * digest updates are left out, since they carry no release timestamp and would otherwise never qualify
 * run npm 11 for lock file updates (`constraints.npm`)
   * npm 12 refuses to regenerate lock files that include a package with `bundleDependencies`, such as `npm` itself
     (npm/cli#9800); revisit once that is fixed
@@ -51,9 +53,9 @@ Note: `matchSourceUrls` patterns use only `https://` URLs because Renovate norma
 
 ### `default.json`
 
-This enables automatic merging of minor and patch releases. External dependencies are subject to the
-`minimumReleaseAge` setting from `base.json`. This can be used directly, but the `js-lib` and `js-app` configurations
-may be more appropriate.
+This enables automatic merging of minor and patch releases. External npm packages and GitHub Actions are subject to
+the `minimumReleaseAge` settings described for `base.json`. This can be used directly, but the `js-lib` and `js-app`
+configurations may be more appropriate.
 
 ### `js-*.json`
 
