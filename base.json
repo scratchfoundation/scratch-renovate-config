@@ -3,6 +3,7 @@
 
   "extends": [
     "config:best-practices",
+    "customManagers:githubActionsVersions",
     "security:minimumReleaseAgeCrate",
     "security:minimumReleaseAgePypi",
     ":timezone(America/New_York)",
