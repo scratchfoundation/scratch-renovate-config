@@ -38,6 +38,10 @@ On top of that, `base.json` adds:
   `security:minimumReleaseAgePypi`)
 * the same 3-day `minimumReleaseAge` for GitHub Actions version updates, which has no built-in preset
   * digest updates are left out, since they carry no release timestamp and would otherwise never qualify
+* update tool versions pinned in workflow `env` blocks (`customManagers:githubActionsVersions`): put a
+  `# renovate: datasource=<datasource> depName=<package>` comment directly above an env var whose name ends in
+  `_VERSION`, and reference that variable in the step (for example, `npx "markdownlint-cli2@${MARKDOWNLINT_VERSION}"`)
+  * the `github-actions` manager reads `uses:` lines but not versions inside `run:` commands
 * set time zone to Scratch time (`:timezone(America/New_York)`)
 * remove the concurrent PR limit (`:prConcurrentLimitNone`) and open at most 4 PRs per hour (`:prHourlyLimit4`)
 * run npm 11 for lock file updates (`constraints.npm`)
