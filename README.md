@@ -52,6 +52,11 @@ On top of that, `base.json` adds:
 * only rebase PRs on request, except lock file maintenance, which rebases automatically
 * identify internal dependencies by source URL and give them higher priority, exempt them from `minimumReleaseAge`,
   and adjust semantic commit types so that internal dependency bumps trigger appropriate version bumps downstream
+* update majors of `eslint`, `@eslint/js`, and `eslint-config-scratch` in one PR
+  * each `eslint-config-scratch` major requires one ESLint major through its peer dependency, so either major alone
+    fails to install
+  * if a new ESLint major arrives before `eslint-config-scratch` supports it, the PR fails until a matching
+    `eslint-config-scratch` major is published; then request a rebase on the PR to pick it up
 
 Note: `matchSourceUrls` patterns use only `https://` URLs because Renovate normalizes all source URLs (including
 `git+ssh://`, `git://`, `git@host:`, etc.) to `https://` before matching.

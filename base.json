@@ -59,6 +59,12 @@
       "semanticCommitType": "style"
     },
     {
+      "description": "update ESLint and eslint-config-scratch majors in one PR, since each eslint-config-scratch major requires a specific ESLint major",
+      "matchPackageNames": ["eslint", "@eslint/js", "eslint-config-scratch"],
+      "matchUpdateTypes": ["major"],
+      "groupName": "ESLint and eslint-config-scratch"
+    },
+    {
       "description": "allow choosing Node upgrades from the full menu",
       "matchPackageNames": ["node"],
       "separateMultipleMajor": true
