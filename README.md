@@ -28,7 +28,7 @@ This extends `config:best-practices`, which provides (among other things):
 
 * semantic commit rules (`fix` for `dependencies`, `chore` for `devDependencies`)
 * pin `devDependencies` to exact versions
-* weekly lock file maintenance
+* weekly lock file maintenance (moved to weekends by `base.json`; see below)
 * a 3-day `minimumReleaseAge` for npm packages (`security:minimumReleaseAgeNpm`), which exempts update types that
   carry no release timestamp, such as lock file maintenance and pinning
 
@@ -49,14 +49,22 @@ On top of that, `base.json` adds:
     (npm/cli#9800); revisit once that is fixed
 * label all Renovate PRs with `dependencies` (`:label(dependencies)`)
   * add the `security` label for any PR associated with a GitHub Security Vulnerability
-* only rebase PRs on request, except lock file maintenance, which rebases automatically
+* rebase PRs only when they conflict with the base branch (`rebaseWhen: conflicted`); lock file maintenance rebases
+  whenever it falls behind
+* keep scheduled work outside working hours in both New York and Bulgaria by running it on weekends
+  (`schedule:weekends`, New York time)
+  * create lock file maintenance PRs on weekends
+  * create and update major PRs only on weekends (`updateNotScheduled: false`), so a change that conflicts with many
+    open majors rebuilds them at most once a week; request a rebase on a PR to refresh it sooner
+  * security fixes ignore schedules and arrive right away
 * identify internal dependencies by source URL and give them higher priority, exempt them from `minimumReleaseAge`,
   and adjust semantic commit types so that internal dependency bumps trigger appropriate version bumps downstream
 * update majors of `eslint`, `@eslint/js`, and `eslint-config-scratch` in one PR
   * each `eslint-config-scratch` major requires one ESLint major through its peer dependency, so either major alone
     fails to install
   * if a new ESLint major arrives before `eslint-config-scratch` supports it, the PR fails until a matching
-    `eslint-config-scratch` major is published; then request a rebase on the PR to pick it up
+    `eslint-config-scratch` major is published; Renovate picks it up on the next weekend, or request a rebase on the
+    PR to pick it up sooner
 
 Note: `matchSourceUrls` patterns use only `https://` URLs because Renovate normalizes all source URLs (including
 `git+ssh://`, `git://`, `git@host:`, etc.) to `https://` before matching.
@@ -65,7 +73,7 @@ Note: `matchSourceUrls` patterns use only `https://` URLs because Renovate norma
 
 This enables automatic merging of minor and patch releases of packages at version 1.0 or later
 (`:automergeStableNonMajor`), digest updates (`:automergeDigest`), pinning, and prerelease internal dependencies. Lock
-file maintenance merges directly to the base branch (`:automergeBranch`) before 4 AM (`schedule:automergeDaily`).
+file maintenance merges directly to the base branch (`:automergeBranch`) on weekends (`schedule:automergeWeekends`).
 External dependencies are subject to the `minimumReleaseAge` settings described for `base.json`. This can be used
 directly, but the `js-lib` and `js-app` configurations may be more appropriate.
 
