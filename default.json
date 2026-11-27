@@ -10,7 +10,7 @@
   "lockFileMaintenance": {
     "description": "Automatically merge lock file updates. Tuned for less noise.",
     "automerge": true,
-    "extends": [":automergeBranch", "schedule:automergeDaily"]
+    "extends": [":automergeBranch", "schedule:automergeWeekends"]
   },
 
   "packageRules": [

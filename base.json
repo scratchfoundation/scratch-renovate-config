@@ -16,10 +16,11 @@
     "npm": "^11"
   },
 
-  "rebaseWhen": "never",
+  "rebaseWhen": "conflicted",
 
   "lockFileMaintenance": {
-    "rebaseWhen": "auto"
+    "rebaseWhen": "auto",
+    "extends": ["schedule:weekends"]
   },
 
   "vulnerabilityAlerts": {
@@ -68,6 +69,12 @@
       "description": "allow choosing Node upgrades from the full menu",
       "matchPackageNames": ["node"],
       "separateMultipleMajor": true
+    },
+    {
+      "description": "create and update major PRs only on weekends (schedule:weekends), outside working hours in both New York and Bulgaria",
+      "matchUpdateTypes": ["major"],
+      "schedule": ["* * * * 0,6"],
+      "updateNotScheduled": false
     }
   ]
 }
